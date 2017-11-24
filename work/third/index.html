@@ -31,10 +31,14 @@
 // .addClass() クラスを追加します。
 // .removeClass() クラスを削除します。
   $(function() {
-    $('.nav li').on('click', function() {
+    $('.nav').children('li').on('click', function() {
       var num = $(this).index();
-      $('.contents li').addClass('is-hidden');
-      $('.contents li').eq(num).removeClass('is-hidden');
+      $('.contents')
+        .children('li')
+        .addClass('is-hidden')
+        .eq(num)
+        .removeClass('is-hidden');
+      // $('.contents li').eq(num).removeClass('is-hidden');
     });
   });
 </script>
