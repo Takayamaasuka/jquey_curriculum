@@ -59,7 +59,7 @@
   $(function() {
     $('.menu__list').children('li').hover(
       function() {
-        $(this).children('ul').stop().slideDown('nomal');
+        $(this).children().next().stop().slideDown('nomal');
       },
       function() {
         $(this).children('ul').stop().slideUp('nomal');
