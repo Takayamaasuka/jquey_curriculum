@@ -99,21 +99,33 @@
 // $().each() DOM要素を1つずつループ処理をする（ループ内で$(this)を使うと要素がひとつずつ取得できる）
 
   $(function() {
+    // $('.select').on('change',function() {
+    //   var category = $(this).val();
+    //   if(category == 'all') {
+    //     $('.list').children('li').each(function() {
+    //       $(this).show()
+    //     });
+    //   } else {
+    //     $('.list').children('li').each(function() {
+    //       if($(this).data('category-type') == category) {
+    //         $(this).show();
+    //       } else {
+    //         $(this).hide();
+    //       }
+    //     });
+    //   }
+    // });
+
     $('.select').on('change',function() {
       var category = $(this).val();
-      if(category == 'all') {
-        $('.list').children('li').each(function() {
-          $(this).show()
-        });
-      } else {
-        $('.list').children('li').each(function() {
-          if($(this).data('category-type') == category) {
-            $(this).show();
-          } else {
-            $(this).hide();
-          }
-        });
-      }
+
+      $('.list').children('li').each(function() {
+        if ($(this).data('category-type') == category || category == 'all') {
+          $(this).show();
+        } else {
+          $(this).hide();
+        }
+      });
     });
   });
 
