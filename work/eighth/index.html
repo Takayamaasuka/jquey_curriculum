@@ -42,6 +42,39 @@
 // .offset().top 要素の位置を取得します。
 // .fadeIn() 要素をフェードインさせる。
 // .fadeOut() 要素をフェードアウトさせる。
+  $(function() {
+    $(window).on('scroll',function() {
+      var scrollTop = $(this).scrollTop();
+
+      if (scrollTop >= 100) {
+        $('.scrollTopBtn').fadeIn('slow');
+      } else if (scrollTop < 100) {
+        $('.scrollTopBtn').fadeOut('slow');
+      }
+    });
+
+    $('.scrollTopBtn').on('click',function() {
+      $('html,body').animate({scrollTop:0});
+    });
+
+    var scrollSet = [];
+    var length = $('.title').length;
+
+    for(var i = 0; i < length;i++) {
+      scrollSet.push($('.title').eq(i).offset().top);
+    }
+
+    $('.menu__btn').on('click',function() {
+      var data = $(this).data('scroll-place-type');
+      if (data === 'home') {
+        $('html,body').animate({scrollTop:scrollSet[0]});
+      } else if (data === 'news') {
+        $('html,body').animate({scrollTop:scrollSet[1]});
+      } else if (data === 'about') {
+        $('html,body').animate({scrollTop:scrollSet[2]});
+      }
+    });
+  });
 </script>
 </body>
 </html>
