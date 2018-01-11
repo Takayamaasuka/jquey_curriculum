@@ -57,22 +57,21 @@
       $('html,body').animate({scrollTop:0});
     });
 
-    var scrollSet = [];
+    var titleData = [];
+    var scrollData = [];
     var length = $('.title').length;
-
-    for(var i = 0; i < length;i++) {
-      scrollSet.push($('.title').eq(i).offset().top);
+    for(var i = 0; i < length; i++) {
+      titleData.push($('.title').eq(i).data('scroll-place-type'));
+      scrollData.push($('.title').eq(i).offset().top);
     }
 
     $('.menu__btn').on('click',function() {
-      var data = $(this).data('scroll-place-type');
-      if (data === 'home') {
-        $('html,body').animate({scrollTop:scrollSet[0]});
-      } else if (data === 'news') {
-        $('html,body').animate({scrollTop:scrollSet[1]});
-      } else if (data === 'about') {
-        $('html,body').animate({scrollTop:scrollSet[2]});
-      }
+      var menuData = $(this).data('scroll-place-type');
+      $.each(titleData,function(index,val) {
+        if(menuData == val) {
+          $('html,body').animate({scrollTop:scrollData[index]});
+        }
+      });
     });
   });
 </script>
